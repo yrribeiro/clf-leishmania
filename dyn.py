@@ -8,28 +8,29 @@ from matplotlib import pyplot as plt
 import cv2
 from skimage.measure import regionprops
 
-IMGS_FOLDER_PATH = './data-preproc/d1-imgRang/images/' # preprocessed images with PIL.Enhance
+IMGS_FOLDER_PATH = '../data/Dataset_1-filter_by_area'
 
 # Path.cwd().joinpath('./d2-patches/leish/').mkdir(parents=True, exist_ok=False)
-LEISH_OUTPUT_PATH = './d1-tentativa2/leish/'
+LEISH_OUTPUT_PATH = '..\data\patches-filter_by_area\d1\leish'
 
 # Path.cwd().joinpath('./d2-patches/no-leish/').mkdir(parents=True, exist_ok=False)
-NO_LEISH_OUTPUT_PATH = './d1-tentativa2/no-leish/'
+NO_LEISH_OUTPUT_PATH = '../data/patches-filter_by_area/d1/no-leish'
 
 MASKS_FOLDER_PATH = './data-preproc/d1-imgRang/masks/'
 # LEISH_MASKS_OUTPUT_PATH = './d1-tentativa2/leish/masks/'
+
 # SHAPE = (2571, 2726, 3) # D2 IMG SHAPE
 SHAPE = (3264, 2448, 3) # D1 IMG SHAPE
 WITH_LEISH_STRIDE = 12
 NO_LEISH_STRIDE = 96
 ALPHA = 0.20
 
-def is_alpha(mask_patch, tot_img_area, ALPHA):
+def is_alpha(mask_patch, tot_img_area):
     leish_area = regionprops(mask_patch)[0].area
     return (leish_area/tot_img_area) >= ALPHA
 
-def crop(img, mask, img_id, dataset, WITH_LEISH_STRIDE, NO_LEISH_STRIDE, SHAPE):
-    x, y, i = 0,0,0
+def crop(img, mask, img_id, WITH_LEISH_STRIDE, NO_LEISH_STRIDE, SHAPE):
+    x, y = 0,0
     end_h, end_w = SHAPE[0], SHAPE[1]
     WINDOW_SIZE = stride = 96
     tot_img_area = WINDOW_SIZE*WINDOW_SIZE
@@ -44,37 +45,23 @@ def crop(img, mask, img_id, dataset, WITH_LEISH_STRIDE, NO_LEISH_STRIDE, SHAPE):
             img_patch = img[x:x+WINDOW_SIZE, y:y+WINDOW_SIZE]
             mask_patch = mask[x:x+WINDOW_SIZE, y:y+WINDOW_SIZE]
 
-            label = 0
             out_name = f'{img_id[0:-4]}-{x}-{y}.png'
             # mask_out_name = f'{img_id[0:-4]}-{x}-{y}.png'
             if np.any(mask_patch == 1):
-                has_enough_leish = is_alpha(mask_patch, tot_img_area, ALPHA)
+                has_enough_leish = is_alpha(mask_patch, tot_img_area)
                 stride = WITH_LEISH_STRIDE
-                if has_enough_leish:
-                    label = 1
-                    cv2.imwrite(LEISH_OUTPUT_PATH+out_name, img_patch)
+                if has_enough_leish and img_patch.size > 0:
+                    cv2.imwrite(os.path.join(LEISH_OUTPUT_PATH, out_name), img_patch)
                     # cv2.imwrite(LEISH_MASKS_OUTPUT_PATH+mask_out_name, mask_patch)
             else:
                 stride = NO_LEISH_STRIDE
-                if np.count_nonzero(img_patch == 255) < 0.5 * tot_img_area:
-                    cv2.imwrite(NO_LEISH_OUTPUT_PATH+out_name, img_patch)
+                if np.count_nonzero(img_patch == 255) < 0.5 * tot_img_area and img_patch.size > 0:
+                    cv2.imwrite(os.path.join(NO_LEISH_OUTPUT_PATH, out_name), img_patch)
 
-            x += stride
             y += stride
-            i += 1
 
-            # pd.concat(
-            #     [
-            #         dataset,
-            #         pd.Series({
-            #             'label': label,
-            #             'patch_id': out_name,
-            #             'patch_mask_id': mask_out_name,
-            #             'original_image_id': img_id,
-            #         })
-            #     ],
-            #     ignore_index=True
-            # )
+        x += stride
+        y = 0
         if not is_looping:
             break
 
@@ -84,13 +71,31 @@ def dynamic_patcher(
         SHAPE=SHAPE,
         WITH_LEISH_STRIDE=WITH_LEISH_STRIDE,
         NO_LEISH_STRIDE=NO_LEISH_STRIDE,
-        ALPHA=ALPHA):
+    ):
 
-    dataset = pd.DataFrame(columns=['label', 'patch_id', 'patch_mask_id', 'original_image_id'])
     all_imgs = os.listdir(IMGS_FOLDER_PATH)
     all_masks = os.listdir(MASKS_FOLDER_PATH)
-    imgs_n_masks = zip(all_imgs, all_masks)
-    print('Total images = ', len(all_imgs), '\nTotal masks = ', len(all_masks))
+
+    # Ordenar as imagens para que fiquem na mesma posição que sua mascara correspondente em outra lista
+    map_imgs = {}
+    for img in all_imgs:
+        id_ = img.split('filtro')[0]
+        map_imgs[id_] = [img, None]
+
+    for mask in all_masks:
+        id_ = mask.split('-')[0]
+        if id_ in map_imgs:
+            map_imgs[id_][1] = mask
+
+    ordered_imgs, ordered_masks = [], []
+    for id_ in sorted(map_imgs):
+        img, mask = map_imgs[id_]
+        if img and mask:
+            ordered_imgs.append(img)
+            ordered_masks.append(mask)
+
+    imgs_n_masks = zip(ordered_imgs, ordered_masks)
+    print('Total images = ', len(ordered_imgs), '\nTotal masks = ', len(ordered_masks))
 
     for img_id, mask_id in tqdm(imgs_n_masks, total=len(all_imgs)):
         img = cv2.imread(os.path.join(IMGS_FOLDER_PATH,img_id))
@@ -100,9 +105,8 @@ def dynamic_patcher(
         mask = cv2.imread(os.path.join(MASKS_FOLDER_PATH,mask_id), 0)
         mask = (mask > 0).astype(int)
 
-        crop(img, mask, img_id, dataset, WITH_LEISH_STRIDE, NO_LEISH_STRIDE, SHAPE)
+        crop(img, mask, img_id, WITH_LEISH_STRIDE, NO_LEISH_STRIDE, SHAPE)
 
-    # dataset.to_csv('data.csv', index=False)
 
 def generate_idv_masks(img_file, dataset, WINDOW_SIZE):
     if dataset == 1:
@@ -136,21 +140,4 @@ def generate_idv_masks(img_file, dataset, WINDOW_SIZE):
 if __name__ == '__main__':
     dynamic_patcher()
     tot_leish, tot_no_leish = len(os.listdir(LEISH_OUTPUT_PATH))-1, len(os.listdir(NO_LEISH_OUTPUT_PATH))
-    print(f'Total patches WITH LEISHMANIA generated = {tot_leish}\nTotal patches WITHOUT = {tot_no_leish}\nProportion = {tot_leish/tot_no_leish:.2f}')
-
-    # teste unitario
-    # img_id, mask_id = '1_image_enhanced.jpg', '1_label.jpg'
-    # img = cv2.imread(os.path.join(IMGS_FOLDER_PATH,img_id))
-    # img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    # SHAPEy = img.shape
-    # mask = cv2.imread(os.path.join(MASKS_FOLDER_PATH,mask_id), 0)
-    # mask = (mask > 0).astype(int)
-    # dataset = pd.DataFrame([])
-
-    # crop(img, mask, img_id, dataset, WITH_LEISH_STRIDE, NO_LEISH_STRIDE, SHAPEy)
-
-    # gerador de mascaras individuais
-    # leish_patches = os.listdir('./d1-patches/leish/')
-    # for filename in leish_patches:
-    #     print(filename)
-    #     generate_idv_masks(filename[0:-4], 1, 96)
+    print(f'Total patches WITH LEISHMANIA generated = {tot_leish}\nTotal patches WITHOUT = {tot_no_leish}')
