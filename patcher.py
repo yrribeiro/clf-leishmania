@@ -7,10 +7,33 @@ import numpy as np
 from skimage.measure import regionprops
 
 def is_alpha(mask_patch, tot_img_area):
+    """
+    Determines if the Leishmania area in a given mask patch exceeds a certain threshold.
+
+    Parameters:
+    - mask_patch (np.array): The patch of the mask image.
+    - tot_img_area (int): Total area of the image patch.
+
+    Returns:
+    bool: True if the area of Leishmania in the mask patch is greater than or equal to the specified threshold, False otherwise.
+    """
     leish_area = regionprops(mask_patch)[0].area
     return (leish_area/tot_img_area) >= config.ALPHA
 
 def crop(img, mask, img_id, WITH_LEISH_STRIDE, NO_LEISH_STRIDE):
+    """
+    Crops an image and its corresponding mask into smaller patches and saves the patches with sufficient Leishmania area.
+
+    Parameters:
+    - img (np.array): The image to be cropped.
+    - mask (np.array): The corresponding mask image.
+    - img_id (str): Identifier of the image.
+    - WITH_LEISH_STRIDE (int): The stride to use for cropping when Leishmania is present.
+    - NO_LEISH_STRIDE (int): The stride to use for cropping when Leishmania is not present.
+
+    Returns:
+    None
+    """
     x, y = 0,0
     end_h, end_w = img.shape[0], img.shape[1]
     stride = config.NO_LEISH_STRIDE
@@ -52,6 +75,18 @@ def dynamic_patcher(
         WITH_LEISH_STRIDE=config.WITH_LEISH_STRIDE,
         NO_LEISH_STRIDE=config.NO_LEISH_STRIDE,
     ):
+    """
+    Processes a set of images and their corresponding masks, cropping and saving patches based on the presence of Leishmania.
+
+    Parameters:
+    - IMGS_FOLDER_PATH (str): Path to the folder containing images. Default from `config` module.
+    - MASKS_FOLDER_PATH (str): Path to the folder containing mask images. Default `config` module.
+    - WITH_LEISH_STRIDE (int): Stride for cropping images with Leishmania. Default `config` module.
+    - NO_LEISH_STRIDE (int): Stride for cropping images without Leishmania. Default `config` module.
+
+    Returns:
+    None
+    """
 
     all_imgs = os.listdir(IMGS_FOLDER_PATH)
     all_masks = os.listdir(MASKS_FOLDER_PATH)
