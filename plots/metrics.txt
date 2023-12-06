@@ -1,0 +1,36 @@
+Triplet:
+    precision_class_0 - Média: 0.9635, Desvio Padrão: 0.0042
+    precision_class_1 - Média: 0.9190, Desvio Padrão: 0.0050
+    recall_class_0 - Média: 0.8283, Desvio Padrão: 0.0115
+    recall_class_1 - Média: 0.9841, Desvio Padrão: 0.0018
+    f1_score_class_0 - Média: 0.8908, Desvio Padrão: 0.0076
+    f1_score_class_1 - Média: 0.9504, Desvio Padrão: 0.0031
+    accuracy - Média: 0.9318, Desvio Padrão: 0.0044
+    MCC [Triplet]: 0.8467329186829864
+Circle:
+    precision_class_0 - Média: 0.9872, Desvio Padrão: 0.0024
+    precision_class_1 - Média: 0.9914, Desvio Padrão: 0.0023
+    recall_class_0 - Média: 0.9830, Desvio Padrão: 0.0046
+    recall_class_1 - Média: 0.9935, Desvio Padrão: 0.0012
+    f1_score_class_0 - Média: 0.9850, Desvio Padrão: 0.0020
+    f1_score_class_1 - Média: 0.9925, Desvio Padrão: 0.0010
+    accuracy - Média: 0.9900, Desvio Padrão: 0.0013
+    MCC [Circle]: 0.977521970834114
+MultiSimilarity:
+    precision_class_0 - Média: 0.8862, Desvio Padrão: 0.0167
+    precision_class_1 - Média: 0.9796, Desvio Padrão: 0.0029
+    recall_class_0 - Média: 0.9613, Desvio Padrão: 0.0057
+    recall_class_1 - Média: 0.9373, Desvio Padrão: 0.0104
+    f1_score_class_0 - Média: 0.9221, Desvio Padrão: 0.0084
+    f1_score_class_1 - Média: 0.9580, Desvio Padrão: 0.0051
+    accuracy - Média: 0.9454, Desvio Padrão: 0.0064
+    MCC [Multisim]: 0.8818874257034444
+NPairs:
+    precision_class_0 - Média: 0.8941, Desvio Padrão: 0.0083
+    precision_class_1 - Média: 0.9741, Desvio Padrão: 0.0061
+    recall_class_0 - Média: 0.9504, Desvio Padrão: 0.0119
+    recall_class_1 - Média: 0.9430, Desvio Padrão: 0.0046
+    f1_score_class_0 - Média: 0.9213, Desvio Padrão: 0.0087
+    f1_score_class_1 - Média: 0.9583, Desvio Padrão: 0.0045
+    accuracy - Média: 0.9455, Desvio Padrão: 0.0059
+    MCC [NPairs]: 0.8806829976694881
