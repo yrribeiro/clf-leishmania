@@ -20,5 +20,4 @@ well in quantitative assessments, implying that AI’s application to medical di
 offers considerable benefits, particularly in cost-effectively assisting physicians in rapidly and
 accurately detecting neglected tropical diseases.
 
-Key-words: Parasite Detection, Visceral Leishmaniasis, Deep Metric Learning, Deep Learning,
-Convolutional Neural Networks, Binary Classification, Automatic Disease Diagnosis.
+<i>This project was used as an undergraduate thesis.</i>
