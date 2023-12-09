@@ -230,7 +230,7 @@ def get_scores(x_test, model, pca, scaler, clf):
 
 def plot_roc_curve(model_id, x_test, model, pca, scaler, clf):
     """
-    Plots the ROC curve for a given set of true labels and decision scores.
+    Plots the individual ROC curve for a given set of true labels and decision scores.
 
     Parameters:
     - model_id (str): Identifier for the model used.
@@ -252,6 +252,45 @@ def plot_roc_curve(model_id, x_test, model, pca, scaler, clf):
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title(f'Receiver Operating Characteristic [{model_id}]')
+    plt.legend(loc="lower right")
+    plt.show()
+
+models = [triplet_model, circle_model, multisim_model, npdot_model]
+pcas = [triplet_pca, circle_pca, multisim_pca, npdot_pca]
+scalers = [triplet_scaler, circle_scaler, multisim_scaler, npdot_scaler]
+clfs = [triplet_clf, circle_clf, multisim_clf, npdot_clf]
+
+def plot_roc_curves(models, x_test, pcas, scalers, clfs):
+    """
+    Plots all ROC curves comparison for a given set of true labels and decision scores.
+
+    Parameters:
+    - models (str): .
+    - x_test (DataLoader): DataLoader for the test data.
+    - pcas (list): A list of fitted PCA objects used to reduce the dimensionality of
+                   the test embeddings.
+    - scalers (list): A list of fitted scaler objects used for normalizing the test
+                      embeddings.
+    - clfs (list): A list of classifier objects to calculate the scores needed for computing ROC curves.
+    
+    Returns:
+    None
+    """
+    plt.figure()
+
+    for (loss_id, model, pca, scaler, clf) in zip(config.LOSSES, models, pcas, scalers, clfs):
+        test_labels, scores = get_scores(x_test, model, pca, scaler, clf)
+        fpr, tpr, thresholds = roc_curve(test_labels, scores)
+        roc_auc = auc(fpr, tpr)
+
+        plt.plot(fpr, tpr, lw=2, label=f'Model {loss_id} (area = {roc_auc:.2f})')
+
+    plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Receiver Operating Characteristic Comparison')
     plt.legend(loc="lower right")
     plt.show()
 ################################
