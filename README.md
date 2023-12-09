@@ -20,4 +20,4 @@ well in quantitative assessments, implying that AI’s application to medical di
 offers considerable benefits, particularly in cost-effectively assisting physicians in rapidly and
 accurately detecting neglected tropical diseases.
 
-<i>This project was used as an undergraduate thesis.</i>
+<i>This is an undergraduate thesis.</i>
