@@ -1,0 +1,58 @@
+No annotation file found for ThickBloodSmears_150\GT_updated\TF108_256\20170830_153525.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF108_256\20170830_160538.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF10_C65P26\20170612_145535.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF112_CJ10\20170830_203623.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF114_SC518\20170830_220137.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF125_S537\20170831_141701.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF130_S521\20170831_170959.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF133_SW322\20170831_182142.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF134_US28\20170831_202341.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF134_US28\20170831_202628.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF141_CT12\20170901_001116.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF146_CT12\20170901_014722.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF147_R3\20170901_020754.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF147_R3\20170901_020841.txt.
+No circles found, thus, no saving. Stopped at ThickBloodSmears_150\TF27_W14B8A\20170724_115156.jpg
+No annotation file found for ThickBloodSmears_150\GT_updated\TF30_W13B1\20170724_150834.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF30_W13B1\20170724_151053.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF30_W13B1\20170724_151215.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF33_Sc570\20170725_144851.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF34_Sc520\20170725_153631.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF34_Sc520\20170725_153729.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF36_Sc542\20170725_214639.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF36_Sc542\20170725_214809.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF38_CT1\20170727_150804.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF41_UT5\20170728_172402.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF43_UW2\20170807_145932.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF45_UW18\20170807_162354_0.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF45_UW18\20170807_162706.txt.
+No circles found, thus, no saving. Stopped at ThickBloodSmears_150\TF48_UW31\20170811_153810.jpg
+No annotation file found for ThickBloodSmears_150\GT_updated\TF48_UW31\20170811_155235.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF48_UW31\20170811_155540.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF48_UW31\20170811_155904.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF50_CW22\20170812_110408.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF52_CW36\20170812_115556.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF55_CV4\20170812_183229.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF57_CV11\20170813_113435.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF58_UT8\20170813_221854.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF60_15_18\20170816_094149.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF60_15_18\20170816_095828.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF60_15_18\20170816_100015.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF64_US2\20170817_114443.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF64_US2\20170817_114551.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF68_TS4\20170817_165006.txt.
+No circles found, thus, no saving. Stopped at ThickBloodSmears_150\TF71_Scr559\20170818_092825.jpg
+No annotation file found for ThickBloodSmears_150\GT_updated\TF73_Scr538\20170818_141430.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF81_W8B5\20170819_150706.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF81_W8B5\20170819_160511.txt.
+No circles found, thus, no saving. Stopped at ThickBloodSmears_150\TF82_15_1_9\20170819_165435.jpg
+No circles found, thus, no saving. Stopped at ThickBloodSmears_150\TF82_15_1_9\20170819_165701.jpg
+No annotation file found for ThickBloodSmears_150\GT_updated\TF84_BD2_96\20170820_113218.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF85_BD2_94\20170820_120218.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF85_BD2_94\20170820_120935.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF89_CM5\20170820_164626.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF89_CM5\20170820_170508.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF93_209\20170829_153212.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF95_223\20170829_163837.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF97_CS31\20170829_172907.txt.
+No annotation file found for ThickBloodSmears_150\GT_updated\TF98_CT12\20170829_202132.txt.
