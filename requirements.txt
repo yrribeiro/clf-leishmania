@@ -1,7 +1,7 @@
 cudatoolkit==11.3.1
 cudnn==8.2.1
 faiss-gpu==1.7.4
-keras==2.8.0
+keras>=2.13.0
 matplotlib==3.8.0
 numpy==1.23.5
 matplotlib==3.8.0
@@ -13,5 +13,5 @@ Pillow>=10.1.0
 scikit_image==0.19.3
 scikit_learn>=1.5.0
 tqdm>=4.66.3
-torch==2.1.0+cu121
+torch>=2.2.0+cu121
 torchvision==0.16.0
